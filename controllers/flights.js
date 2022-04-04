@@ -4,17 +4,17 @@ module.exports = {
   new: newFlight,
   show: showFlight,
   index,
-  create 
+  create,
 };
 
-function index(req, res){
-    Flight.find({}, function(err, flights){
-        res.render('flights/index', { flights });
-    })
+function index(req, res) {
+  Flight.find({}, function (err, flights) {
+    res.render("flights/index", { flights });
+  });
 }
 
 function create(req, res) {
-//   if (req.body.cast) req.body.case = req.body.cast.split(",");
+  //   if (req.body.cast) req.body.case = req.body.cast.split(",");
   const flight = new Flight(req.body);
   flight.save(function (err) {
     if (err) return res.render("flights/new");
@@ -29,15 +29,17 @@ function newFlight(req, res) {
 }
 
 function showFlight(req, res) {
-    res.render("flights/show");
-
-};
-
-
+    Flight.findById({_id: req.params.id }, function (err, flight){
+        console.log(flight)
+        res.render("flights/show", { flight });
+        
+    })
+    
+}
 
 // Flight.find({}).sort([['departs', +1]]).exec(function(err, flights) {
 //     res.render('flights/index', {
-//     flights, 
+//     flights,
 //     title: 'All Flights'
 //     });
 // });
