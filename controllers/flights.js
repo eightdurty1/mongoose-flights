@@ -15,6 +15,7 @@ function index(req, res) {
 
 function create(req, res) {
   //   if (req.body.cast) req.body.case = req.body.cast.split(",");
+  console.log(req.body);
   const flight = new Flight(req.body);
   flight.save(function (err) {
     if (err) return res.render("flights/new");
@@ -29,12 +30,10 @@ function newFlight(req, res) {
 }
 
 function showFlight(req, res) {
-    Flight.findById({_id: req.params.id }, function (err, flight){
-        console.log(flight)
-        res.render("flights/show", { flight });
-        
-    })
-    
+  Flight.findById({ _id: req.params.id }, function (err, flight) {
+    console.log(flight);
+    res.render("flights/show", { flight });
+  });
 }
 
 // Flight.find({}).sort([['departs', +1]]).exec(function(err, flights) {
