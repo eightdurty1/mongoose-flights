@@ -4,8 +4,7 @@ module.exports = {
   new: newFlight,
   show: showFlight,
   index,
-  create
-//   show 
+  create 
 };
 
 function index(req, res){
@@ -30,8 +29,10 @@ function newFlight(req, res) {
 }
 
 function showFlight(req, res) {
-  res.render("flights/show");
-}
+    res.render("flights/show");
+
+};
+
 
 
 // Flight.find({}).sort([['departs', +1]]).exec(function(err, flights) {
