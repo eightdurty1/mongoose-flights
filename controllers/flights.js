@@ -13,6 +13,9 @@ function index(req, res) {
   });
 }
 
+
+
+
 function create(req, res) {
   //   if (req.body.cast) req.body.case = req.body.cast.split(",");
   console.log(req.body);
@@ -25,16 +28,31 @@ function create(req, res) {
   });
 }
 
+
+
+
 function newFlight(req, res) {
   res.render("flights/new", { title: "New Flight" });
 }
 
+
+
+
+
 function showFlight(req, res) {
-  Flight.findById({ _id: req.params.id }, function (err, flight) {
+  Flight.findById(req.params.id, function (err, flight) {
+    // Flight.findById(req.params.id, function (err, flight){
+
+    
     console.log(flight);
     res.render("flights/show", { flight });
   });
 }
+
+
+
+
+
 
 // Flight.find({}).sort([['departs', +1]]).exec(function(err, flights) {
 //     res.render('flights/index', {
